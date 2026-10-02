@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VolcanicScanner</title>
+    <meta
+      name="description"
+      content="Generador de códigos QR para enlaces, texto y mensajes con estilo moderno."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark">V</div>
+          <div>
+            <p class="eyebrow">QR generator</p>
+            <h1>VolcanicScanner</h1>
+          </div>
+        </div>
+      </header>
+
+      <main class="main-grid">
+        <section class="panel form-panel">
+          <div class="panel-header">
+            <p class="section-tag">Contenido</p>
+            <h2>Crear QR</h2>
+          </div>
+
+          <form id="qr-form">
+            <label class="field">
+              <span>Tipo</span>
+              <select id="qr-type">
+                <option value="text">Texto</option>
+                <option value="url">URL</option>
+                <option value="whatsapp">WhatsApp</option>
+                <option value="vcard">Tarjeta</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Datos</span>
+              <textarea id="qr-content" rows="6" placeholder="Escribe aquí el texto o enlace...">https://github.com/srsergio2011-cmyk/volcanicscanner</textarea>
+            </label>
+
+            <div class="field-row">
+              <label class="field compact">
+                <span>Tamaño</span>
+                <input id="qr-size" type="range" min="180" max="520" value="320" />
+              </label>
+
+              <label class="field compact">
+                <span>Margen</span>
+                <input id="qr-margin" type="range" min="0" max="10" value="2" />
+              </label>
+            </div>
+
+            <div class="field-row colors">
+              <label class="field compact color-field">
+                <span>Color</span>
+                <input id="qr-color" type="color" value="#f97316" />
+              </label>
+
+              <label class="field compact color-field">
+                <span>Fondo</span>
+                <input id="qr-bg" type="color" value="#ffffff" />
+              </label>
+            </div>
+
+            <div class="actions">
+              <button type="submit" class="primary">Generar QR</button>
+              <button type="button" id="download-btn" class="secondary">Descargar PNG</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="panel preview-panel">
+          <div class="panel-header">
+            <p class="section-tag">Vista previa</p>
+            <h2>Resultado</h2>
+          </div>
+
+          <div class="qr-stage">
+            <canvas id="qr-canvas" width="320" height="320" aria-label="Código QR generado"></canvas>
+          </div>
+
+          <div class="meta">
+            <div>
+              <span class="meta-label">Tamaño</span>
+              <strong id="meta-size">320 x 320</strong>
+            </div>
+            <div>
+              <span class="meta-label">Formato</span>
+              <strong>PNG</strong>
+            </div>
+          </div>
+
+          <button type="button" id="copy-btn" class="ghost">Copiar imagen</button>
+        </section>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
